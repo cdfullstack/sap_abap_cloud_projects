@@ -1,0 +1,4 @@
+@EndUserText.label: 'Service Definition for SOHeader'
+define service ZUI_C_SALESORDER_HEAD {
+  expose ZC_SALESORDER_HEADER;
+}

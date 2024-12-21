@@ -1,0 +1,31 @@
+managed implementation in class zbp_i_salesorder_header unique;
+
+define behavior for ZI_SALESORDER_HEADER alias SalesHeader
+persistent table zsales_orderhead
+lock master
+etag master LastChangedAt
+{
+  field ( readonly, numbering : managed ) soid;
+  field ( readonly ) Sorder, CreatedBy, CreatedAt, LastChangedAt, LastChangedBy;
+  field ( mandatory ) partner, Status, Price, Cuky;
+
+  create;
+  update;
+  delete;
+
+  determination GenerateOrderNumber on save { create; }
+
+  mapping for zsales_orderhead
+  {
+   Soid = soid;
+   Sorder = sorder;
+   Partner = partner;
+   Status = status;
+   Price = price;
+   Cuky = cuky;
+   CreatedBy = created_by;
+   CreatedAt = created_at;
+   LastChangedBy = last_changed_by;
+   LastChangedAt = last_changed_at;
+  }
+}

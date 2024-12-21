@@ -1,0 +1,50 @@
+@Metadata.layer: #CORE
+
+@UI: { headerInfo: { typeName: 'Order', typeNamePlural: 'Orders',
+                     title:{ type: #STANDARD, value: 'SOrderNo', label: 'Order'} } }
+
+annotate entity ZC_SALESORDER_HEADER with
+{
+  @UI.facet: [ { id:              'Order',
+                 purpose:         #STANDARD,
+                 type:            #IDENTIFICATION_REFERENCE,
+                 label:           'Order',
+                 position:        10 } ]
+
+  @UI.hidden: true
+  Guid;
+
+  @UI: {
+    lineItem:       [ { position: 10, importance: #HIGH } ],
+    identification: [ { position: 10, label: 'Order No.' } ] }
+  @Search.defaultSearchElement: true
+  SOrderNo;
+
+  @UI: {
+  lineItem:       [ { position: 20, importance: #HIGH } ],
+  identification: [ { position: 20, label: 'Customer' } ],
+  selectionField: [ { position: 20 } ] }
+  Customer;
+
+  @UI: {
+    lineItem:       [ { position: 30, importance: #HIGH } ],
+    identification: [ { position: 30, label: 'Status' } ] }
+  Status;
+
+  @UI: {
+      lineItem:       [ { position: 40, importance: #HIGH } ],
+      identification: [ { position: 40, label: 'Total Price' } ] }
+  Price;
+
+  @UI: {
+      lineItem:       [ { position: 50, importance: #MEDIUM } ],
+      identification: [ { position: 50, label: 'Created By' } ] }
+  CreatedBy;
+
+  @UI.hidden: true
+  CreatedAt;
+  @UI.hidden: true
+  LastChangedBy;
+  @UI.hidden: true
+  LastChangedAt;
+}
